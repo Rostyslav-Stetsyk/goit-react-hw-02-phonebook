@@ -49,12 +49,16 @@ export class App extends Component {
         </Section>
         <Section title={'Contacts'}>
           <Filter onChange={this.onChange} />
-          <ContactList
-            contacts={this.state.contacts.filter(el =>
-              el.name.toLowerCase().includes(this.state.filter)
-            )}
-            onDelete={this.onDelete}
-          />
+          {this.state.contacts.length ? (
+            <ContactList
+              contacts={this.state.contacts.filter(el =>
+                el.name.toLowerCase().includes(this.state.filter)
+              )}
+              onDelete={this.onDelete}
+            />
+          ) : (
+            <p>No contacts</p>
+          )}
         </Section>
       </>
     );
